@@ -1,0 +1,80 @@
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <title>Kalkulator</title>
+</head>
+<body>
+
+<script language="JavaScript">
+function dodawanie() {
+  var skl1 = parseFloat(document.Form1.a.value);
+  var skl2 = parseFloat(document.Form1.b.value);
+  var wynik = skl1 + skl2;
+  alert(wynik);
+}
+</script>
+
+<form name="Form1">
+a = <input type="Text" name="a"><br>
+b = <input type="Text" name="b"><br>
+<input type="Button" value="Oblicz sumê" onclick="dodawanie()">
+</form>
+
+<hr>
+
+<script language="JavaScript">
+function odejmowanie() {
+  var skl1 = parseFloat(document.forms[1].elements[0].value);
+  var skl2 = parseFloat(document.forms[1].elements[1].value);
+  var wynik = skl1 - skl2;
+  alert(wynik);
+}
+</script>
+
+<form name="Form2">
+x = <input type="Text"><br>
+y = <input type="Text"><br>
+<input type="Button" value="Oblicz ró¿nicê" onclick="odejmowanie()">
+</form>
+
+<hr>
+
+<script language="JavaScript">
+function mnozenie() {
+  var skl1 = parseFloat(document.forms[2].elements[0].value);
+  var skl2 = parseFloat(document.forms[2].elements[1].value);
+  var wynik = skl1 * skl2;
+  alert(wynik);
+}
+</script>
+
+<form name="Form3">
+a = <input type="Text"><br>
+b = <input type="Text"><br>
+<input type="Button" value="Oblicz iloczyn" onclick="mnozenie()">
+</form>
+
+<hr>
+
+<script language="JavaScript">
+function dzielenie() {
+  var skl1 = parseFloat(document.forms[3].elements[0].value);
+  var skl2 = parseFloat(document.forms[3].elements[1].value);
+
+  if (skl2 == 0) {
+    alert("Nie mo¿na dzieliæ przez zero!");
+  } else {
+    var wynik = skl1 / skl2;
+    alert(wynik);
+  }
+}
+</script>
+
+<form name="Form4">
+a = <input type="Text"><br>
+b = <input type="Text"><br>
+<input type="Button" value="Oblicz iloraz" onclick="dzielenie()">
+</form>
+
+</body>
+</html>

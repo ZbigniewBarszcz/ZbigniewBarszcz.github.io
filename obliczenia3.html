@@ -1,0 +1,51 @@
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />  
+  <title>Kalkulator</title>
+</head>
+<body>
+
+<script>
+function pobierzDane() {
+  var a = parseFloat(document.Form.a.value);
+  var b = parseFloat(document.Form.b.value);
+  return { a: a, b: b };
+}
+
+function dodawanie() {
+  var d = pobierzDane();
+  alert(d.a + d.b);
+}
+
+function odejmowanie() {
+  var d = pobierzDane();
+  alert(d.a - d.b);
+}
+
+function mnozenie() {
+  var d = pobierzDane();
+  alert(d.a * d.b);
+}
+
+function dzielenie() {
+  var d = pobierzDane();
+  if (d.b == 0) {
+    alert("Nie można dzielić przez zero");
+  } else {
+    alert(d.a / d.b);
+  }
+}
+</script>
+
+<form name="Form">
+a = <input type="text" name="a"><br>
+b = <input type="text" name="b"><br><br>
+
+<input type="button" value="+" onclick="dodawanie()">
+<input type="button" value="-" onclick="odejmowanie()">
+<input type="button" value="*" onclick="mnozenie()">
+<input type="button" value="/" onclick="dzielenie()">
+</form>
+
+</body>
+</html>
