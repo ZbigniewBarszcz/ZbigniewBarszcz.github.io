@@ -1,14 +1,33 @@
-
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 </head>
+
+<body>
+
 <form>
     Waga (kg):<br>
     <input type="number" id="waga"><br><br>
 
     Wzrost (cm):<br>
     <input type="number" id="wzrost"><br><br>
+
+    <br>Wybierz ulubioną kartę w Clash Royale:
+    <br>
+    <select id="karta">
+        <option value="mega">Mega Knight</option>
+        <option value="pekka">Pekka</option>
+        <option value="hog">Hog Rider</option>
+        <option value="ebarbs">Elite Barbarians</option>
+    </select>
+
+    <br><br>Wybierz ulubiony owoc:<br>
+    <input type="radio" name="owoc" value="mango"> Mango<br>
+    <input type="radio" name="owoc" value="jablko"> Jabłko<br>
+    <input type="radio" name="owoc" value="gruszka"> Gruszka<br>
+    <input type="radio" name="owoc" value="pomarancza"> Pomarańcza<br>
+    <input type="radio" name="owoc" value="granat"> Granat<br><br>
 
     <input type="button" value="Oblicz BMI" onclick="obliczBMI()">
 </form>
@@ -18,42 +37,39 @@
 <script>
 function obliczBMI() {
     var waga = document.getElementById("waga").value;
-    var wzrost = document.getElementById("wzrost").value;
+    var wzrost = document.getElementById("wzrost").value / 100;
+    var karta = document.getElementById("karta").value;
+    var owoc = document.querySelector('input[name="owoc"]:checked');
 
-    wzrost = wzrost / 100;
+    if (!owoc) {
+        alert("Wybierz owoc!");
+        return;
+    }
 
     var bmi = waga / (wzrost * wzrost);
-    var opis = "";
 
-    if (bmi < 18.5) {
-        opis = "Niedowaga";
-    } else if (bmi < 25) {
-        opis = "Waga prawidłowa";
-    } else if (bmi < 30) {
-        opis = "Nadwaga";
-    } else {
-        opis = "Otyłość";
-    }
+    if (owoc.value === "mango") bmi -= 1;
+    else if (owoc.value === "jablko") bmi -= 0.5;
+    else if (owoc.value === "gruszka") bmi -= 0.3;
+    else if (owoc.value === "pomarancza") bmi -= 0.2;
+    else if (owoc.value === "granat") bmi -= 0.1;
+
+    if (karta === "mega") bmi += 1.5;
+    else if (karta === "pekka") bmi += 1;
+    else if (karta === "hog") bmi += 0.5;
+    else if (karta === "ebarbs") bmi += 2;
+
+    var opis = "";
+    if (bmi < 18.5) opis = "Niedowaga";
+    else if (bmi < 25) opis = "Waga prawidłowa";
+    else if (bmi < 30) opis = "Nadwaga";
+    else opis = "Otyłość";
 
     document.getElementById("wynik").innerHTML =
         "Twoje BMI: " + bmi.toFixed(2) + "<br>" +
         "Klasyfikacja: " + opis;
 }
 </script>
-<form>
-<br>Wybierz ulubiona Karta w Clash Royale : 
-<br><select name="Karta">
-	<option>Mega Knight</option>
-	<option>Pekka</option>
-	<option>hog rider</option>
-	<option>Elite Barbarians</option>
-</select>
-<br>Wybierz ulubiony owoc <br><input type="radio" name="kolory" value="biał"> Mango<br>
-<input type="radio" name="kolory" value="czar"> japko<br>
-<input type="radio" name="kolory" value="czer"> gruszka<br>
-<input type="radio" name="kolory" value="nieb"> pomarańcza<br>
-<input type="radio" name="kolory" value="żółt"> granat<br>
-</form>
-</span>
+
 </body>
 </html>
