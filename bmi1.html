@@ -1,0 +1,59 @@
+
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<form>
+    Waga (kg):<br>
+    <input type="number" id="waga"><br><br>
+
+    Wzrost (cm):<br>
+    <input type="number" id="wzrost"><br><br>
+
+    <input type="button" value="Oblicz BMI" onclick="obliczBMI()">
+</form>
+
+<p id="wynik"></p>
+
+<script>
+function obliczBMI() {
+    var waga = document.getElementById("waga").value;
+    var wzrost = document.getElementById("wzrost").value;
+
+    wzrost = wzrost / 100;
+
+    var bmi = waga / (wzrost * wzrost);
+    var opis = "";
+
+    if (bmi < 18.5) {
+        opis = "Niedowaga";
+    } else if (bmi < 25) {
+        opis = "Waga prawidłowa";
+    } else if (bmi < 30) {
+        opis = "Nadwaga";
+    } else {
+        opis = "Otyłość";
+    }
+
+    document.getElementById("wynik").innerHTML =
+        "Twoje BMI: " + bmi.toFixed(2) + "<br>" +
+        "Klasyfikacja: " + opis;
+}
+</script>
+<form>
+<br>Wybierz ulubiona Karta w Clash Royale : 
+<br><select name="Karta">
+	<option>Mega Knight</option>
+	<option>Pekka</option>
+	<option>hog rider</option>
+	<option>Elite Barbarians</option>
+</select>
+<br>Wybierz ulubiony owoc <br><input type="radio" name="kolory" value="biał"> Mango<br>
+<input type="radio" name="kolory" value="czar"> japko<br>
+<input type="radio" name="kolory" value="czer"> gruszka<br>
+<input type="radio" name="kolory" value="nieb"> pomarańcza<br>
+<input type="radio" name="kolory" value="żółt"> granat<br>
+</form>
+</span>
+</body>
+</html>
